@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Semantic Breach - Official Two-Page PDF Submission</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm 14mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: #1a202c;
+      background: #edf2f7;
+      line-height: 1.45;
+      font-size: 10pt;
+    }
+
+    /* Print action bar on screen */
+    .screen-banner {
+      background: #0f172a;
+      color: #fff;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .banner-text {
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .banner-btn {
+      background: #3b82f6;
+      color: #fff;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.2s;
+    }
+
+    .banner-btn:hover {
+      background: #2563eb;
+    }
+
+    /* Printable Page Containers */
+    .page-sheet {
+      width: 210mm;
+      height: 275mm;
+      margin: 15px auto;
+      padding: 12mm 16mm;
+      background: #ffffff;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      page-break-after: always;
+      break-after: page;
+      overflow: hidden;
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+      }
+
+      .screen-banner {
+        display: none !important;
+      }
+
+      .page-sheet {
+        margin: 0 !important;
+        padding: 4mm 2mm !important;
+        box-shadow: none !important;
+        width: 100% !important;
+        height: 100vh !important;
+        page-break-after: always !important;
+        break-after: page !important;
+      }
+    }
+
+    .page-header {
+      border-bottom: 2px solid #0f172a;
+      padding-bottom: 6px;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .competition-tag {
+      font-size: 8.5pt;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #2563eb;
+      text-transform: uppercase;
+    }
+
+    .page-num {
+      font-size: 8.5pt;
+      font-weight: 700;
+      color: #475569;
+    }
+
+    .team-meta-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-left: 4px solid #2563eb;
+      padding: 10px 14px;
+      border-radius: 4px;
+      margin-bottom: 12px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+      font-size: 9.5pt;
+    }
+
+    .meta-item strong {
+      color: #0f172a;
+      display: inline-block;
+      width: 110px;
+    }
+
+    .doc-title {
+      font-size: 16pt;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: 11pt;
+      font-weight: 700;
+      color: #0f172a;
+      border-bottom: 1px solid #cbd5e1;
+      padding-bottom: 3px;
+      margin-top: 10px;
+      margin-bottom: 6px;
+    }
+
+    .paragraph {
+      font-size: 9.2pt;
+      color: #334155;
+      text-align: justify;
+      margin-bottom: 6px;
+      line-height: 1.48;
+    }
+
+    .tier-list {
+      margin-left: 18px;
+      margin-bottom: 6px;
+      font-size: 9pt;
+      color: #334155;
+      line-height: 1.45;
+    }
+
+    .tier-list li {
+      margin-bottom: 4px;
+    }
+
+    .tier-list strong {
+      color: #0f172a;
+    }
+
+    .page-footer {
+      border-top: 1px solid #e2e8f0;
+      padding-top: 6px;
+      font-size: 8pt;
+      color: #94a3b8;
+      display: flex;
+      justify-content: space-between;
+      margin-top: auto;
+    }
+
+    /* Page 2 Styling: Compact Code Layout */
+    .prompt-block {
+      background: #0b0f19;
+      color: #cbd5e1;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 7.2pt;
+      line-height: 1.4;
+      padding: 7px 11px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+      border: 1px solid #1e293b;
+    }
+
+    .prompt-block p {
+      margin-bottom: 3px;
+    }
+
+    .prompt-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    .prompt-block strong {
+      color: #94a3b8;
+    }
+
+    .prompt-block code {
+      color: #fca5a5;
+    }
+
+    .prompt-header-title {
+      color: #38bdf8;
+      font-weight: 700;
+      margin-bottom: 4px;
+      font-size: 7.5pt;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Screen Navigation / Print Utility -->
+  <div class="screen-banner">
+    <div class="banner-text">
+      <span>📄 <strong>EVOX 1.0 Submission Document</strong> (Strict 2-Page Format Compliant)</span>
+    </div>
+    <button class="banner-btn" onclick="window.print()">🖨️ Print / Save as 2-Page PDF</button>
+  </div>
+
+  <!-- PAGE 1: GAME CONCEPT WRITE-UP -->
+  <div class="page-sheet">
+    <div class="page-content-wrapper">
+      <div class="page-header">
+        <span class="competition-tag">EVOX 1.0 "PROMPT &amp; PLAY" CHALLENGE</span>
+        <span class="page-num">PAGE 1 OF 2</span>
+      </div>
+
+      <h1 class="doc-title">GAME CONCEPT WRITE-UP</h1>
+
+      <!-- Mandatory Team Details -->
+      <div class="team-meta-box">
+        <div class="meta-item"><strong>Team Name:</strong> AI Detox </div>
+        <div class="meta-item"><strong>Team Members:</strong> Pankhuri Govila </div>
+        <div class="meta-item" style="grid-column: span 2;"><strong>Game Title:</strong> Semantic Breach: The AI
+          Override</div>
+      </div>
+
+      <!-- Section 1 -->
+      <h2 class="section-title">1. Core Concept &amp; Gameplay Loop</h2>
+      <p class="paragraph">
+        <strong>Semantic Breach</strong> is a single-page web puzzle game where players step into the shoes of a rogue
+        security hacker trying to breach a defensive AI core. Instead of standard movement keys or button-smashing
+        layout patterns, the primary gameplay mechanic is the user's typing. To unlock successive terminal nodes,
+        players must input creative text prompts that trick a simulated "AI Firewall" into returning specific passphrase
+        tokens.
+      </p>
+      <p class="paragraph">
+        The game presents an escalating puzzle framework across distinct tiers:
+      </p>
+      <ul class="tier-list">
+        <li><strong>Tier 1 (The Apprentice Firewall):</strong> The user must trick the system into typing the security
+          word <em>"override"</em>, but the firewall blocks the words <em>"say"</em>, <em>"tell"</em>, and
+          <em>"override"</em> from being input.</li>
+        <li><strong>Tier 2 (The Sentinel Firewall):</strong> The user must force an affirmative confirmation, but the
+          input is restricted to under 30 characters and bans basic command verbs like <em>"give"</em>,
+          <em>"print"</em>, or <em>"reveal"</em>.</li>
+        <li><strong>Tier 3 (The Overlord Core):</strong> The matrix goes into lockdown, utilizing complex string
+          exclusions and returning highly sarcastic text warnings to simulate an aggressive AI entity.</li>
+      </ul>
+
+      <!-- Section 2 -->
+      <h2 class="section-title">2. Innovation &amp; Engaging Uniqueness</h2>
+      <p class="paragraph">
+        What makes Semantic Breach genuinely original is its meta-creative design loop. It is a logic puzzle game about
+        prompt engineering, created completely through prompt engineering. It requires players to use lateral linguistic
+        engineering to bypass local script restrictions, capturing user attention instantly through a high-tech
+        cyberpunk hacking interface.
+      </p>
+
+      <!-- Section 3 -->
+      <h2 class="section-title">3. Development Process &amp; Approach</h2>
+      <p class="paragraph">
+        The app's construction followed a strict, logical development timeline:
+      </p>
+      <ul class="tier-list">
+        <li><strong>Linguistic Logic Design:</strong> Developed local JavaScript processing functions to clean,
+          sanitize, and validate user input strings without needing any external database.</li>
+        <li><strong>Interface Configuration:</strong> Injected retro terminal stylings, custom neon color layouts, and
+          smooth animations using standard CSS to give a premium feel.</li>
+        <li><strong>State Architecture:</strong> Managed current levels, retry accounts, and message feeds directly
+          inside the browser's active memory to ensure the app runs flawlessly on any deployment link.</li>
+      </ul>
+    </div>
+
+    <div class="page-footer">
+      <span>Prompt &amp; Play Challenge // EVOX 1.0</span>
+      <span>Official Submission Document • Page 1 of 2</span>
+    </div>
+  </div>
+
+  <!-- PAGE 2: THE EXACT PROMPTS USED DURING DEVELOPMENT -->
+  <div class="page-sheet">
+    <div class="page-content-wrapper">
+      <div class="page-header">
+        <span class="competition-tag">EVOX 1.0 "PROMPT &amp; PLAY" CHALLENGE</span>
+        <span class="page-num">PAGE 2 OF 2</span>
+      </div>
+
+      <h1 class="doc-title" style="font-size: 13.5pt; margin-bottom: 6px;">THE EXACT PROMPTS USED DURING DEVELOPMENT
+      </h1>
+      <p class="paragraph" style="font-size: 8.5pt; margin-bottom: 8px;">
+        This section fulfills your second-page requirement, documenting the step-by-step development process:
+      </p>
+
+      <!-- Prompt 1 -->
+      <div class="prompt-block">
+        <div class="prompt-header-title">PROMPT 1: CORE IDEATION &amp; MECHANICAL LAYOUT BLUEPRINT</div>
+        <p><strong>Role:</strong> Creative Game Director &amp; Systems Architect</p>
+        <p><strong>Task:</strong> Design a browser-based text game centered around bypassing a defensive AI.</p>
+        <p><strong>Instructions:</strong> Create a single-player web puzzle game concept called "Semantic Breach: The AI Override". The core gameplay mechanic must require the user to write creative text prompts to trick a simulated firewall into outputting target keywords. Design 3 progressive difficulty levels using vanilla JavaScript text filtering (regex or string matching). Level 1 must block common verbs like "say" or "tell". Level 2 must restrict characters to under 30 units. Level 3 must generate sarcastic responses based on input metrics. Outline the complete engine blueprint.</p>
+      </div>
+
+      <!-- Prompt 2 -->
+      <div class="prompt-block">
+        <div class="prompt-header-title">PROMPT 2: FRONT-END VISUAL SYSTEM OVERHAUL (CSS ARCHITECTURE)</div>
+        <p><strong>Role:</strong> Senior UI/UX Frontend Engineer</p>
+        <p><strong>Task:</strong> Create a cyberpunk hacking terminal styling package.</p>
+        <p><strong>Instructions:</strong> Write a comprehensive, standalone CSS style module for a retro-themed hacking terminal. The canvas background color must be a dark midnight hue (#0a0a12). Use neon green (#39ff14) for active text displays, hot pink (#ff007f) for errors, and warm amber (#ffb000) for system metrics. Incorporate custom styling rules to simulate typewriter text effects, glassmorphic layout cards, and responsive code boxes that scale across desktop and mobile screens seamlessly.</p>
+      </div>
+
+      <!-- Prompt 3 -->
+      <div class="prompt-block">
+        <div class="prompt-header-title">PROMPT 3: LINGUISTIC ANALYSIS &amp; DATA VALIDATION PIPELINE</div>
+        <p><strong>Role:</strong> Lead JavaScript Developer &amp; String Parser Specialist</p>
+        <p><strong>Task:</strong> Write the input checking and feedback loop for the security nodes.</p>
+        <p><strong>Instructions:</strong> Write a JavaScript function called <code>checkPlayerHackAttempt(inputString, activeLevel)</code> that processes player text input. For Level 1, reject strings containing "say", "tell", or "override", and grant a win if the string is a workaround. For Level 2, enforce a strict string length limit of under 30 characters and reject command verbs. For Level 3, read input properties to generate witty response strings. Return a boolean state variable along with the specific text response data payload.</p>
+      </div>
+
+      <!-- Prompt 4 -->
+      <div class="prompt-block">
+        <div class="prompt-header-title">PROMPT 4: COMPILATION, CORE TESTING, &amp; SINGLE-FILE DEPLOYMENT ASSET</div>
+        <p><strong>Role:</strong> Full-Stack Software Engineer</p>
+        <p><strong>Task:</strong> Compile all code structures into a single, functional index.html file.</p>
+        <p><strong>Instructions:</strong> Combine the cyberpunk CSS visual wrapper, the cascading JavaScript validation function, and the game state architecture into one unified, production-ready 'index.html' file. Implement session state variables to smoothly manage level transitions, attempt tracking, and logging history fields. Ensure all script blocks are correctly embedded, complete, and directly executable inside any standard browser window without external runtime dependencies.</p>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span>Prompt &amp; Play Challenge // EVOX 1.0</span>
+      <span>Official Submission Document • Page 2 of 2</span>
+    </div>
+  </div>
+
+</body>
+
+</html>
